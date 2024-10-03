@@ -45,6 +45,7 @@ app.get('/', (req, res) => {
 
 
 //Getting route to fetch and display data from database
+//question 1 :Retrieve all patients
 app.get('/patients',(req,res)=>{
   db.query('SELECT patient_id,first_name,last_name,date_of_birth FROM patients',(err,results)=>{
     if(err){
@@ -55,6 +56,8 @@ app.get('/patients',(req,res)=>{
     }
   });
 });
+
+//Quesdtion 2 :Retrieve all providers
 app.get('/providers',(req,res)=>{
   db.query('SELECT first_name,last_name,provider_specialty FROM providers',(err,results)=>{
     if(err){
@@ -65,6 +68,8 @@ app.get('/providers',(req,res)=>{
     }
   });
 });
+
+//Question 3:Filter patients by First Name
 app.get('/patients_filter', (req, res) => {
   const firstName = req.query.first_name;  // Get first_name from the query parameters
 
@@ -82,7 +87,7 @@ app.get('/patients_filter', (req, res) => {
   });
 });
 
-
+//Question 4:Retrieve all providers by their specialty
 app.get('/providers_filter', (req, res) => {
   const specialty = req.query.specialty;  // Get specialty from the query parameters
 
